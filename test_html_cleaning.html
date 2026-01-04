@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Page for HTML Cleaning - Complete Test Suite</title>
+    <meta
+      name="description"
+      content="This page tests all HTML cleaning scenarios"
+    />
+    <!-- These meta tags should be removed -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="analytics.js"></script>
+    <style>
+      .hidden {
+        display: none;
+      }
+      body {
+        font-family: Arial;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HTML Comment - should be removed -->
+
+    <!-- Test 1: Page Header with Mixed Content -->
+    <header>
+      <h1>Welcome to Our Test Website</h1>
+      <h2>Your Trusted Partner Since 2024</h2>
+      <p>This paragraph should be removed - it's in header but not a heading</p>
+      <div class="logo">Logo div should be removed</div>
+    </header>
+
+    <!-- Test 2: Main Navigation - Pure Noise (should be completely removed) -->
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Test 3: Navigation with Contact Info (should preserve contact info) -->
+    <nav>
+      <ul class="navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products">Products</a></li>
+        <li>
+          Need help? Call us at
+          <a href="tel:+1-555-123-4567">+1 (555) 123-4567</a> or email
+          <a href="mailto:support@example.com">support@example.com</a>
+          Monday through Friday, 9am-5pm EST
+        </li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <!-- Test 4: Navigation with Hash Links (should be removed) -->
+    <ul class="navigation">
+      <li><a href="#">Quick Links</a></li>
+      <li><a href="#top">Back to Top</a></li>
+      <li><a href="#section1">Jump to Section</a></li>
+    </ul>
+
+    <!-- Test 5: Navigation with Descriptive Text (should be preserved) -->
+    <ul class="site-nav">
+      <li><a href="/enterprise">Enterprise</a></li>
+      <li>
+        Our comprehensive product line includes enterprise solutions for Fortune
+        500 companies, small business packages for startups, and individual
+        plans tailored to your specific needs. We serve over 10,000 customers
+        worldwide.
+      </li>
+      <li><a href="/pricing">Pricing</a></li>
+    </ul>
+
+    <!-- Test 6: Main Content Area -->
+    <main>
+      <article>
+        <h1>Main Article Title - Important Content</h1>
+
+        <p>
+          This is the main content of the page. It should be preserved because
+          it contains valuable information about our products and services. This
+          paragraph has enough content to be meaningful and useful for analysis.
+        </p>
+
+        <!-- Test 7: Cookie Consent Modal (should be removed) -->
+        <div class="cky-modal">
+          <p>We use cookies to improve your experience</p>
+          <button>Accept</button>
+        </div>
+
+        <div class="cky-consent-banner">
+          <p>Cookie consent banner text</p>
+        </div>
+
+        <!-- Test 8: Ad Blocker Detection (should be removed) -->
+        <div aria-label="Ad Blocker Detected">
+          <p>Please disable your ad blocker to continue</p>
+        </div>
+
+        <!-- Test 9: Obfuscated Email (should be decoded) -->
+        <p>
+          Contact our support team at
+          <a
+            href="/cdn-cgi/l/email-protection#1f6d7a7c7b5f7a677e726f737a317c7072"
+            >[email&#160;protected]</a
+          >
+          for assistance.
+        </p>
+
+        <!-- Test 10: Various Tags that Should Be Removed -->
+        <script>
+          console.log("This script should be removed");
+          var data = { key: "value" };
+        </script>
+
+        <style>
+          .inline-style {
+            color: red;
+          }
+        </style>
+
+        <noscript>
+          <p>JavaScript is required - this should be removed</p>
+        </noscript>
+
+        <!-- Test 11: Form Elements (now preserved) -->
+        <form action="/submit">
+          <input type="text" name="name" placeholder="Your Name" />
+          <button type="submit">Submit</button>
+        </form>
+
+        <!-- Test 12: Code and Pre Tags (should be removed) -->
+        <pre>
+                function example() {
+                    return "code block";
+                }
+            </pre
+        >
+
+        <code>inline code snippet</code>
+
+        <!-- Test 13: Images, Videos, SVG (should be removed) -->
+        <img src="photo.jpg" alt="Photo" />
+        <video src="video.mp4"></video>
+        <svg><circle cx="50" cy="50" r="40" /></svg>
+        <canvas id="myCanvas"></canvas>
+
+        <!-- Test 14: Useful Content with Links -->
+        <p>
+          Visit our <a href="/documentation">comprehensive documentation</a> to
+          learn more about our API. You can also reach our sales team at
+          <a href="mailto:sales@enterprise.com">sales@enterprise.com</a> or call
+          <a href="tel:+1-800-555-0199">1-800-555-0199</a> for enterprise
+          inquiries.
+        </p>
+
+        <!-- Test 15: Breadcrumbs (should be removed) -->
+        <div class="breadcrumbs">
+          <a href="/">Home</a> > <a href="/products">Products</a> >
+          <span>Current Page</span>
+        </div>
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a> / <a href="/category">Category</a> / Item
+        </nav>
+
+        <!-- Test 16: Footer-like Classes in Divs (should be removed) -->
+        <div class="footer-section">
+          <p>Footer content that should be removed</p>
+        </div>
+
+        <div class="page-footer">
+          <p>More footer content to remove</p>
+        </div>
+
+        <!-- Test 17: Exception - Not Footer (should be preserved) -->
+        <div class="footer not-footer">
+          <p>
+            This looks like footer but has 'not-footer' class so should be
+            preserved. It contains important disclaimer information that users
+            need to read before proceeding with their purchase.
+          </p>
+        </div>
+
+        <!-- Test 18: Developer Test Elements (should be removed) -->
+        <div class="dev_test">
+          <p>Development testing element</p>
+        </div>
+
+        <!-- Test 19: Empty Elements (should be removed) -->
+        <div></div>
+        <p></p>
+        <span> </span>
+        <div>
+          <p></p>
+        </div>
+
+        <!-- Test 20: Non-Empty Content (should be preserved) -->
+        <div>
+          <p>
+            This is meaningful content that explains our three-tier service
+            model: Basic, Professional, and Enterprise. Each tier offers
+            different levels of support and features designed to meet your
+            specific business needs.
+          </p>
+        </div>
+
+        <!-- Test 21: Navigation with Short Content After Link Removal (should be removed) -->
+        <ul class="nav-list">
+          <li><a href="/page1">Page 1</a></li>
+          <li><a href="/page2">Page 2</a></li>
+          <li>Short text</li>
+        </ul>
+
+        <!-- Test 22: Feedback and AppCues (should be removed) -->
+        <div class="feedback-widget">
+          <button>Send Feedback</button>
+        </div>
+
+        <div class="appcues-container">
+          <p>Guided tour content</p>
+        </div>
+
+        <appcues>Custom appcues element</appcues>
+
+        <!-- Test 23: JavaScript Data (should be removed) -->
+        <div class="js-data" data-config='{"key":"value"}'>
+          Hidden data for JavaScript
+        </div>
+
+        <!-- Test 24: Various Removed Tags -->
+        <iframe src="embedded.html"></iframe>
+        <object data="object.pdf"></object>
+        <embed src="media.swf" />
+        <map name="imagemap"></map>
+        <dialog open>Dialog content</dialog>
+        <template>Template content</template>
+        <hr />
+        <picture>
+          <source srcset="image.webp" />
+          <img src="fallback.jpg" />
+        </picture>
+
+        <!-- Test 25: Aside Content (should be removed) -->
+        <aside>
+          <h3>Related Articles</h3>
+          <p>Sidebar content that should be removed</p>
+        </aside>
+
+        <!-- Test 26: Multiple Headings (should be preserved) -->
+        <h2>Section Heading</h2>
+        <p>Content under section heading.</p>
+
+        <h3>Subsection Heading</h3>
+        <p>Content under subsection heading.</p>
+
+        <h4>Sub-subsection</h4>
+        <h5>Even Smaller Heading</h5>
+
+        <!-- Test 27: Lists with Mixed Content -->
+        <ul>
+          <li>Regular list item with good content about our services</li>
+          <li>
+            Another item explaining our commitment to customer satisfaction
+          </li>
+          <li>Third item describing our 24/7 support availability</li>
+        </ul>
+
+        <ol>
+          <li>Step one: Visit our website and create an account</li>
+          <li>Step two: Choose your preferred subscription plan</li>
+          <li>Step three: Complete the payment process securely</li>
+        </ol>
+
+        <!-- Test 28: Table Content (should be preserved) -->
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Basic</th>
+            <th>Pro</th>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>10GB</td>
+            <td>100GB</td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Email</td>
+            <td>24/7 Phone</td>
+          </tr>
+        </table>
+
+        <!-- Test 29: Whitespace and Special Characters -->
+        <p>
+          This paragraph has&#194;&#160;special&nbsp;characters and multiple
+          spaces that should be normalized properly.
+        </p>
+
+        <!-- Test 30: Nav UL with Tel/Mailto in Context -->
+        <ul class="contact-nav">
+          <li><a href="/home">Home</a></li>
+          <li>
+            Emergency support available 24/7. Call
+            <a href="tel:+1-911-555-0911">911-555-0911</a> for immediate
+            assistance or email
+            <a href="mailto:emergency@example.com">emergency@example.com</a>.
+            Response time guaranteed within 15 minutes for enterprise customers.
+          </li>
+        </ul>
+
+        <!-- Test 31: Real-World Example - Mixed Navigation -->
+        <nav>
+          <ul class="main-navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="#">More</a></li>
+            <li>
+              <span>Customer Service:</span>
+              <a href="tel:555-0123">555-0123</a>
+            </li>
+            <li><a href="/cart">Cart</a></li>
+          </ul>
+        </nav>
+
+        <!-- Test 32: Blockquote (should be preserved) -->
+        <blockquote>
+          "This is an important customer testimonial that provides valuable
+          social proof for our products and services. This quote demonstrates
+          real user satisfaction." - John Doe, CEO
+        </blockquote>
+
+        <!-- Test 33: Strong and Emphasis (should be preserved with text) -->
+        <p>
+          This is <strong>important information</strong> that should be
+          <em>emphasized</em> for our users to understand the key benefits.
+        </p>
+      </article>
+    </main>
+
+    <!-- Test 34: Footer Element (should be completely removed) -->
+    <footer>
+      <div class="footer-content">
+        <h3>Footer Heading</h3>
+        <p>Footer paragraph with links</p>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/sitemap">Sitemap</a></li>
+        </ul>
+        <p>Copyright 2024 - All rights reserved</p>
+      </div>
+    </footer>
+
+    <!-- Test 35: Footer with Not-Footer Class (should be preserved) -->
+    <div class="footer not-footer">
+      <p>
+        This contains important legal disclaimer information that must be
+        displayed to users. Even though it has 'footer' in the class, the
+        'not-footer' class indicates it should be preserved as it contains
+        critical content.
+      </p>
+    </div>
+
+    <!-- Test 36: Footer with No-Footer Class (should be preserved) -->
+    <div class="footer no-footer">
+      <p>
+        This also contains important disclaimer information. The code checks for
+        both 'not-footer' and 'no-footer' classes, so this should also be
+        preserved even though it has 'footer' in the class name.
+      </p>
+    </div>
+
+    <!-- Test 37: System-Region Tag (should be removed) -->
+    <system-region>
+      <p>System region content that should be completely removed</p>
+    </system-region>
+
+    <!-- Test 38: Standalone Button (should be removed) -->
+    <button class="cta-button">Standalone Call to Action Button</button>
+
+    <!-- Test 39: Standalone Input (should be removed) -->
+    <input type="text" placeholder="Search..." />
+
+    <!-- Test 40: Link Tag in Body (should be removed) -->
+    <link rel="alternate" href="/alternative" />
+
+    <!-- Test 41: Title in Body (should extract title and clear attributes) -->
+    <div>
+      <title>This title is wrongly placed in body</title>
+      <p>Content after title</p>
+    </div>
+
+    <!-- Test 42: Multiple H1 (should extract as title if title is empty) -->
+    <div class="content-section">
+      <h1>This H1 Could Be Used as Title Fallback</h1>
+      <p>Content under the H1</p>
+    </div>
+
+    <!-- Additional scripts that should be removed -->
+    <script>
+      // Analytics tracking
+      window.dataLayer = window.dataLayer || [];
+    </script>
+  </body>
+</html>

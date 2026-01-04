@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Test Page for HTML Cleaning - STYLED VERSION (Before Cleaning)
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f5f5f5;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      header h2 {
+        font-size: 1.5em;
+        font-weight: normal;
+        opacity: 0.9;
+      }
+
+      /* Navigation */
+      nav {
+        background: #2c3e50;
+        padding: 0;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav li {
+        margin: 0;
+      }
+
+      nav a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        transition: background 0.3s;
+      }
+
+      nav a:hover {
+        background: #34495e;
+      }
+
+      .navbar-nav,
+      .navigation,
+      .site-nav,
+      .contact-nav,
+      .main-navigation {
+        background: #34495e;
+        margin-bottom: 1px;
+      }
+
+      /* Badge styles for test scenarios */
+      [class*="nav"] li:has(a[href^="tel"]),
+      [class*="nav"] li:has(a[href^="mailto"]) {
+        background: #27ae60;
+        border: 2px solid #2ecc71;
+      }
+
+      /* Main Content */
+      main {
+        padding: 40px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        color: #2c3e50;
+      }
+
+      h1 {
+        font-size: 2em;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+      }
+      h2 {
+        font-size: 1.75em;
+        color: #667eea;
+      }
+      h3 {
+        font-size: 1.5em;
+      }
+      h4 {
+        font-size: 1.25em;
+      }
+      h5 {
+        font-size: 1.1em;
+      }
+
+      p {
+        margin-bottom: 15px;
+        line-height: 1.8;
+      }
+
+      /* Test annotations */
+      article
+        > *:not(h1):not(h2):not(h3):not(p):not(ul):not(ol):not(table):not(
+          blockquote
+        ) {
+        border: 2px dashed #e74c3c;
+        margin: 20px 0;
+        padding: 15px;
+        background: #fee;
+        position: relative;
+      }
+
+      article
+        > *:not(h1):not(h2):not(h3):not(p):not(ul):not(ol):not(table):not(
+          blockquote
+        )::before {
+        content: "⚠️ SHOULD BE REMOVED";
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background: #e74c3c;
+        color: white;
+        padding: 2px 10px;
+        font-size: 0.8em;
+        font-weight: bold;
+        border-radius: 3px;
+      }
+
+      /* Cookie consent modal */
+      .cky-modal,
+      .cky-consent-banner {
+        background: #f39c12;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      /* Footer */
+      footer {
+        background: #2c3e50;
+        color: white;
+        padding: 40px;
+        margin-top: 40px;
+      }
+
+      footer h3 {
+        color: white;
+      }
+
+      footer ul {
+        list-style: none;
+      }
+
+      footer a {
+        color: #3498db;
+        text-decoration: none;
+      }
+
+      .footer,
+      .footer-section,
+      .page-footer {
+        background: #e74c3c;
+        color: white;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .not-footer {
+        background: #27ae60 !important;
+      }
+
+      /* Breadcrumbs */
+      .breadcrumbs,
+      .breadcrumb {
+        background: #ecf0f1;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.9em;
+      }
+
+      /* Contact links styling */
+      a[href^="tel"],
+      a[href^="mailto"] {
+        background: #27ae60;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a[href^="tel"]:hover,
+      a[href^="mailto"]:hover {
+        background: #229954;
+      }
+
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      /* Lists */
+      ul,
+      ol {
+        margin: 15px 0;
+        padding-left: 40px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      /* Blockquote */
+      blockquote {
+        border-left: 4px solid #667eea;
+        padding: 20px;
+        margin: 20px 0;
+        background: #f8f9fa;
+        font-style: italic;
+      }
+
+      /* Forms */
+      form {
+        background: #ecf0f1;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+
+      input,
+      button {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      button {
+        background: #667eea;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #5568d3;
+      }
+
+      /* Legend */
+      .legend {
+        background: #f8f9fa;
+        border: 2px solid #dee2e6;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .legend h3 {
+        margin-top: 0;
+        color: #495057;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+      }
+
+      .legend-box {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        border-radius: 4px;
+        border: 2px solid #333;
+      }
+
+      .remove {
+        background: #fee;
+        border-color: #e74c3c;
+      }
+      .preserve {
+        background: #27ae60;
+      }
+      .contact {
+        background: #27ae60;
+      }
+      .footer-remove {
+        background: #e74c3c;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Visual Legend -->
+      <div class="legend">
+        <h3>🎨 Visual Guide</h3>
+        <div class="legend-item">
+          <div class="legend-box remove"></div>
+          <span
+            ><strong>Red/Pink boxes</strong> = Elements that SHOULD BE REMOVED
+            by cleaning</span
+          >
+        </div>
+        <div class="legend-item">
+          <div class="legend-box preserve"></div>
+          <span
+            ><strong>Green backgrounds</strong> = Contact info that SHOULD BE
+            PRESERVED</span
+          >
+        </div>
+        <div class="legend-item">
+          <div class="legend-box contact"></div>
+          <span
+            ><strong>Green buttons</strong> = Tel/Mailto links (preserved
+            contact info)</span
+          >
+        </div>
+      </div>
+
+      <!-- Test 1: Page Header with Mixed Content -->
+      <header>
+        <h1>Welcome to Our Test Website</h1>
+        <h2>Your Trusted Partner Since 2024</h2>
+        <p>
+          This paragraph should be removed - it's in header but not a heading
+        </p>
+        <div class="logo">Logo div should be removed</div>
+      </header>
+
+      <!-- Test 2: Main Navigation - Pure Noise (should be completely removed) -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Test 3: Navigation with Contact Info (should preserve contact info) -->
+      <nav>
+        <ul class="navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/products">Products</a></li>
+          <li>
+            Need help? Call us at
+            <a href="tel:+1-555-123-4567">+1 (555) 123-4567</a> or email
+            <a href="mailto:support@example.com">support@example.com</a>
+            Monday through Friday, 9am-5pm EST
+          </li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Test 4: Navigation with Hash Links (should be removed) -->
+      <ul class="navigation">
+        <li><a href="#">Quick Links</a></li>
+        <li><a href="#top">Back to Top</a></li>
+        <li><a href="#section1">Jump to Section</a></li>
+      </ul>
+
+      <!-- Test 5: Navigation with Descriptive Text (should be preserved) -->
+      <ul class="site-nav">
+        <li><a href="/enterprise">Enterprise</a></li>
+        <li>
+          Our comprehensive product line includes enterprise solutions for
+          Fortune 500 companies, small business packages for startups, and
+          individual plans tailored to your specific needs. We serve over 10,000
+          customers worldwide.
+        </li>
+        <li><a href="/pricing">Pricing</a></li>
+      </ul>
+
+      <!-- Test 6: Main Content Area -->
+      <main>
+        <article>
+          <h1>Main Article Title - Important Content</h1>
+
+          <p>
+            This is the main content of the page. It should be preserved because
+            it contains valuable information about our products and services.
+            This paragraph has enough content to be meaningful and useful for
+            analysis.
+          </p>
+
+          <!-- Test 7: Cookie Consent Modal (should be removed) -->
+          <div class="cky-modal">
+            <p>🍪 We use cookies to improve your experience</p>
+            <button>Accept</button>
+          </div>
+
+          <!-- Test 14: Useful Content with Links -->
+          <p>
+            Visit our
+            <a href="/documentation">comprehensive documentation</a> to learn
+            more about our API. You can also reach our sales team at
+            <a href="mailto:sales@enterprise.com">sales@enterprise.com</a> or
+            call <a href="tel:+1-800-555-0199">1-800-555-0199</a> for enterprise
+            inquiries.
+          </p>
+
+          <!-- Test 15: Breadcrumbs (should be removed) -->
+          <div class="breadcrumbs">
+            <a href="/">Home</a> &gt; <a href="/products">Products</a> &gt;
+            <span>Current Page</span>
+          </div>
+
+          <!-- Test 17: Exception - Not Footer (should be preserved) -->
+          <div class="footer not-footer">
+            <p>
+              ✅ This looks like footer but has 'not-footer' class so should be
+              preserved. It contains important disclaimer information that users
+              need to read before proceeding with their purchase.
+            </p>
+          </div>
+
+          <!-- Test 20: Non-Empty Content (should be preserved) -->
+          <div>
+            <p>
+              This is meaningful content that explains our three-tier service
+              model: Basic, Professional, and Enterprise. Each tier offers
+              different levels of support and features designed to meet your
+              specific business needs.
+            </p>
+          </div>
+
+          <!-- Test 26: Multiple Headings (should be preserved) -->
+          <h2>Section Heading</h2>
+          <p>Content under section heading.</p>
+
+          <h3>Subsection Heading</h3>
+          <p>Content under subsection heading.</p>
+
+          <h4>Sub-subsection</h4>
+          <h5>Even Smaller Heading</h5>
+
+          <!-- Test 27: Lists with Mixed Content -->
+          <ul>
+            <li>Regular list item with good content about our services</li>
+            <li>
+              Another item explaining our commitment to customer satisfaction
+            </li>
+            <li>Third item describing our 24/7 support availability</li>
+          </ul>
+
+          <ol>
+            <li>Step one: Visit our website and create an account</li>
+            <li>Step two: Choose your preferred subscription plan</li>
+            <li>Step three: Complete the payment process securely</li>
+          </ol>
+
+          <!-- Test 28: Table Content (should be preserved) -->
+          <table>
+            <tr>
+              <th>Feature</th>
+              <th>Basic</th>
+              <th>Pro</th>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>10GB</td>
+              <td>100GB</td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>Email</td>
+              <td>24/7 Phone</td>
+            </tr>
+          </table>
+
+          <!-- Test 30: Nav UL with Tel/Mailto in Context -->
+          <ul class="contact-nav">
+            <li><a href="/home">Home</a></li>
+            <li>
+              Emergency support available 24/7. Call
+              <a href="tel:+1-911-555-0911">911-555-0911</a> for immediate
+              assistance or email
+              <a href="mailto:emergency@example.com">emergency@example.com</a>.
+              Response time guaranteed within 15 minutes for enterprise
+              customers.
+            </li>
+          </ul>
+
+          <!-- Test 32: Blockquote (should be preserved) -->
+          <blockquote>
+            "This is an important customer testimonial that provides valuable
+            social proof for our products and services. This quote demonstrates
+            real user satisfaction." - John Doe, CEO
+          </blockquote>
+
+          <!-- Test 33: Strong and Emphasis (should be preserved with text) -->
+          <p>
+            This is <strong>important information</strong> that should be
+            <em>emphasized</em> for our users to understand the key benefits.
+          </p>
+        </article>
+      </main>
+
+      <!-- Test 34: Footer Element (should be completely removed) -->
+      <footer>
+        <div class="footer-content">
+          <h3>Footer Heading</h3>
+          <p>Footer paragraph with links</p>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+          <p>Copyright 2024 - All rights reserved</p>
+        </div>
+      </footer>
+
+      <!-- Test 35: Footer with Not-Footer Class (should be preserved) -->
+      <div
+        class="footer not-footer"
+        style="
+          border: 2px solid #27ae60;
+          padding: 15px;
+          margin: 20px 0;
+          background: #e8f5e9;
+        "
+      >
+        <p>
+          <strong>✅ Footer with Not-Footer:</strong> This contains important
+          legal disclaimer information that must be displayed to users. Even
+          though it has 'footer' in the class, the 'not-footer' class indicates
+          it should be preserved as it contains critical content.
+        </p>
+      </div>
+
+      <!-- Test 36: Footer with No-Footer Class (should be preserved) -->
+      <div
+        class="footer no-footer"
+        style="
+          border: 2px solid #27ae60;
+          padding: 15px;
+          margin: 20px 0;
+          background: #e8f5e9;
+        "
+      >
+        <p>
+          <strong>✅ Footer with No-Footer:</strong> This also contains
+          important disclaimer information. The code checks for both
+          'not-footer' and 'no-footer' classes.
+        </p>
+      </div>
+
+      <!-- Test 37: System-Region Tag (should be removed) -->
+      <div
+        style="
+          border: 2px dashed #e74c3c;
+          padding: 15px;
+          margin: 20px 0;
+          background: #fee;
+        "
+      >
+        <p>
+          <strong>⚠️ System-Region:</strong> This should be completely removed
+        </p>
+        <system-region>
+          <p>System region content</p>
+        </system-region>
+      </div>
+
+      <!-- Test 38: Standalone Button (should be removed) -->
+      <div
+        style="
+          border: 2px dashed #e74c3c;
+          padding: 15px;
+          margin: 20px 0;
+          background: #fee;
+        "
+      >
+        <p><strong>⚠️ Standalone Button:</strong> Should be removed</p>
+        <button
+          class="cta-button"
+          style="background: #e74c3c; color: white; padding: 10px 20px"
+        >
+          Standalone Call to Action Button
+        </button>
+      </div>
+
+      <!-- Test 39: Standalone Input (should be removed) -->
+      <div
+        style="
+          border: 2px dashed #e74c3c;
+          padding: 15px;
+          margin: 20px 0;
+          background: #fee;
+        "
+      >
+        <p><strong>⚠️ Standalone Input:</strong> Should be removed</p>
+        <input
+          type="text"
+          placeholder="Search..."
+          style="padding: 10px; border: 1px solid #ccc"
+        />
+      </div>
+
+      <!-- Test 40: Link Tag (should be removed) -->
+      <div
+        style="
+          border: 2px dashed #e74c3c;
+          padding: 15px;
+          margin: 20px 0;
+          background: #fee;
+        "
+      >
+        <p><strong>⚠️ Link Tag:</strong> Should be removed</p>
+        <link rel="alternate" href="/alternative" />
+        <p>Link tag placed in body (invalid HTML but should be handled)</p>
+      </div>
+
+      <!-- Test 41: Title in Body (should extract and remove) -->
+      <div
+        style="
+          border: 2px solid #3498db;
+          padding: 15px;
+          margin: 20px 0;
+          background: #e3f2fd;
+        "
+      >
+        <p>
+          <strong>📋 Title in Body:</strong> Title should be extracted, element
+          removed
+        </p>
+        <title>This title is wrongly placed in body</title>
+        <p>Content after title should remain</p>
+      </div>
+
+      <!-- Test 42: H1 as Title Fallback -->
+      <div
+        style="
+          border: 2px solid #27ae60;
+          padding: 15px;
+          margin: 20px 0;
+          background: #e8f5e9;
+        "
+      >
+        <p>
+          <strong>✅ H1 Title Fallback:</strong> Can be used as title if
+          &lt;title&gt; is empty
+        </p>
+        <h1>This H1 Could Be Used as Title Fallback</h1>
+        <p>Content under the H1 that should be preserved</p>
+      </div>
+    </div>
+  </body>
+</html>
