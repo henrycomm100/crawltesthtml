@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - HTML Test Pages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            min-height: 100vh;
+            background: #f5f7fa;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .page-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .page-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .page-card h2 {
+            color: #333;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .page-link {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .page-link:hover {
+            opacity: 0.9;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML Test Pages</h1>
+            <p class="subtitle">Browse all available pages in this project</p>
+        </header>
+
+        <div class="pages-grid">
+            <div class="page-card">
+                <div class="icon">🧹</div>
+                <h2>HTML Cleaning Test</h2>
+                <p>Test page for HTML cleaning functionality and content processing.</p>
+                <a href="test_html_cleaning.html" class="page-link">View Page →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">🎨</div>
+                <h2>HTML Cleaning (Styled)</h2>
+                <p>Styled version of the HTML cleaning test page with enhanced visuals.</p>
+                <a href="test_html_cleaning_styled.html" class="page-link">View Page →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">💬</div>
+                <h2>Chat Support</h2>
+                <p>Live chat support page with link to Comm100 chat window.</p>
+                <a href="chat-link.html" class="page-link">View Page →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">🔌</div>
+                <h2>Chat Widget Demo</h2>
+                <p>Page with embedded Comm100 live chat widget for instant support.</p>
+                <a href="chat-widget.html" class="page-link">View Page →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

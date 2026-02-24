@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-card h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .content-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .chat-hint {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .chat-hint p {
+            color: white;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <header>
+            <h1>Chat Widget Demo</h1>
+            <p class="subtitle">Experience our embedded live chat support</p>
+        </header>
+
+        <div class="content-card">
+            <h2>Welcome to Our Support Page</h2>
+            <p>This page demonstrates the Comm100 live chat widget integration. The chat button should appear in the corner of your screen, allowing you to instantly connect with our support team.</p>
+            
+            <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; color: #333;">Features</h3>
+            <ul class="feature-list">
+                <li>Real-time chat with support agents</li>
+                <li>No page navigation required</li>
+                <li>Persistent chat across page visits</li>
+                <li>Mobile-friendly interface</li>
+                <li>File sharing capabilities</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2>How It Works</h2>
+            <p>The chat widget is embedded directly into this page. Look for the chat button (usually in the bottom-right corner) to start a conversation. Your chat session will remain active even if you navigate to other pages on the site.</p>
+        </div>
+
+        <div class="chat-hint">
+            <p>👋 Look for the chat button in the corner to start chatting!</p>
+        </div>
+    </div>
+
+    <!--Begin Comm100 Live Chat Code-->
+    <div id="comm100-button-cb2d8cb1-c6de-45c8-ab32-a0f8a9038a09"></div>
+    <script type="text/javascript">
+      var Comm100API=Comm100API||{};(function(t){function e(e){var a=document.createElement("script"),c=document.getElementsByTagName("script")[0];a.type="text/javascript",a.async=!0,a.src=e+t.site_id,c.parentNode.insertBefore(a,c)}t.chat_buttons=t.chat_buttons||[],t.chat_buttons.push({code_plan:"cb2d8cb1-c6de-45c8-ab32-a0f8a9038a09",div_id:"comm100-button-cb2d8cb1-c6de-45c8-ab32-a0f8a9038a09"}),t.site_id=50000002,t.main_code_plan="cb2d8cb1-c6de-45c8-ab32-a0f8a9038a09",e("https://vue.comm100.com/livechat.ashx?siteId="),setTimeout(function(){t.loaded||e("https://standby.comm100vue.com/livechat.ashx?siteId=")},5e3)})(Comm100API||{})
+    </script>
+    <!--End Comm100 Live Chat Code-->
+</body>
+</html>
